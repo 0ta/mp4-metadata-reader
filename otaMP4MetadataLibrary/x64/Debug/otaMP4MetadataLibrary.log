@@ -1,0 +1,4 @@
+﻿  metadataManager.cpp
+C:\Users\036ta\OneDrive\デスクトップ\otaapp\mp4-metadata-reader\otaMP4MetadataLibrary\metadataManager.cpp(74,12): warning C4244: 'return': 'int64_t' から 'uint32_t' への変換です。データが失われる可能性があります。
+     ライブラリ C:\Users\036ta\OneDrive\デスクトップ\otaapp\mp4-metadata-reader\x64\Debug\otaMP4MetadataLibrary.lib とオブジェクト C:\Users\036ta\OneDrive\デスクトップ\otaapp\mp4-metadata-reader\x64\Debug\otaMP4MetadataLibrary.exp を作成中
+  otaMP4MetadataLibrary.vcxproj -> C:\Users\036ta\OneDrive\デスクトップ\otaapp\mp4-metadata-reader\x64\Debug\otaMP4MetadataLibrary.dll
