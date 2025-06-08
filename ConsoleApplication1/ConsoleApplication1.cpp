@@ -12,7 +12,6 @@ int main()
 {
     std::cout << "Hello World!\n";
     const char* input = "D:\\tmp\\Record_PlaneAndMeshingAR_1201_2132_32.MP4";
-    const char* output = ".\\test.mp4";
     //decode_and_encode_video(output, input);
     uint32_t size = loadMetadata(input);
     std::cout << "size||" << size << "||" << std::endl;

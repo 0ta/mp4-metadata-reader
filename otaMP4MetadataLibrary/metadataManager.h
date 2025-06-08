@@ -1,4 +1,8 @@
 #pragma once
+#define NOMINMAX
+#include <windows.h>
+#include <sstream>
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -26,7 +30,9 @@ extern "C" {
 
 extern "C"
 {
+	OTAMP4METADATALIB_API void testLoadMetadata(const char* input, uint32_t size);
 	OTAMP4METADATALIB_API uint32_t loadMetadata(const char* input);
 	OTAMP4METADATALIB_API uint32_t getBufferSize();
 	OTAMP4METADATALIB_API uint32_t peekMetadata(double time, uint8_t*& data);
+	OTAMP4METADATALIB_API void freePeekMetadataBuffer(uint8_t* data);
 }

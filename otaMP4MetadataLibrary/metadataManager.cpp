@@ -10,8 +10,16 @@ std::vector<MetadataInfo> allFramMetaData;
 
 //private function
 bool areAlmostEqualRelative(double a, double b);
+void printHEXFromCharArray(const unsigned char cs[], size_t size);
+void printHEXFromChar(unsigned char c);
+
+OTAMP4METADATALIB_API void testLoadMetadata(const char* input, uint32_t size) {
+    if (!input) return;
+    printHEXFromCharArray(reinterpret_cast<const unsigned char*>(input), size);
+}
 
 OTAMP4METADATALIB_API uint32_t loadMetadata(const char* input) {
+    if (!input) return -1;
     // Pre process
     AVFormatContext* inputFmtContxt = NULL;
     AVStream* in_stream = NULL;
@@ -100,9 +108,42 @@ OTAMP4METADATALIB_API uint32_t peekMetadata(double time, uint8_t*& data) {
     return 0;
 }
 
+OTAMP4METADATALIB_API void freePeekMetadataBuffer(uint8_t* data) {
+    delete[] data;
+}
+
 static bool areAlmostEqualRelative(double a, double b) {
     double diff = std::fabs(a - b);
     double maxAB = std::max(std::fabs(a), std::fabs(b));
     return diff <= maxAB * std::numeric_limits<double>::epsilon();
+}
+
+void printHEXFromCharArray(const unsigned char cs[], size_t size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << "[" << i << "]";
+        printHEXFromChar(cs[i]);
+    }
+}
+
+void printHEXFromChar(unsigned char c) {
+    std::ostringstream oss;
+    oss << std::uppercase
+        << std::hex
+        << std::setw(2)
+        << std::setfill('0')
+        << static_cast<int>(c)
+        << "\n";
+    OutputDebugStringA(oss.str().c_str());
+
+    std::ostringstream oss2;
+    oss2 << "------------------------------------\n";
+    OutputDebugStringA(oss2.str().c_str());
+
+    std::ostringstream oss3;
+    oss3 << "Value = " << c << '\n';
+    OutputDebugStringA(oss3.str().c_str());
+
+    //std::printf("0x%02X ", static_cast<unsigned char>(c));
+    //std::cout << std::endl;
 }
 
